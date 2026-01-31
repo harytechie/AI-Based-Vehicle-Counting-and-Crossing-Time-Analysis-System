@@ -1,0 +1,66 @@
+# AI-Based Vehicle Counting System Configuration
+
+# Model Configuration
+model:
+  name: "yolov8n.pt"  # YOLOv8 nano (fastest), options: yolov8n, yolov8s, yolov8m, yolov8l, yolov8x
+  confidence_threshold: 0.5
+  iou_threshold: 0.45
+  device: "cpu"  # Options: cpu, cuda, mps
+  
+# Vehicle Classes (COCO dataset)
+detection:
+  vehicle_classes:
+    - 2   # car
+    - 3   # motorcycle
+    - 5   # bus
+    - 7   # truck
+  class_names:
+    2: "car"
+    3: "motorcycle"
+    5: "bus"
+    7: "truck"
+
+# Tracking Configuration
+tracking:
+  algorithm: "deepsort"  # Options: sort, deepsort, bytetrack
+  max_age: 30  # Maximum frames to keep track alive without detection
+  min_hits: 3  # Minimum detections before track is confirmed
+  iou_threshold: 0.3
+
+# Checkpoint Configuration
+checkpoint:
+  type: "line"  # Options: line, polygon
+  default_line:
+    start: [50, 360]    # Start from left edge (covers all lanes)
+    end: [1230, 360]    # Extend to right edge (full highway width)
+  crossing_buffer: 5  # Pixels buffer for crossing detection
+
+# Video Processing
+video:
+  resize_width: 1280
+  resize_height: 720
+  fps_limit: 30  # Process at max FPS
+  skip_frames: 0  # Process every Nth frame (0 = process all)
+
+# Analysis
+analysis:
+  time_unit: "seconds"  # Options: seconds, milliseconds
+  export_format: "csv"  # Options: csv, json, excel
+  
+# UI Configuration
+ui:
+  theme: "dark"
+  page_title: "Vehicle Counting System"
+  page_icon: "🚗"
+  
+# Paths
+paths:
+  videos: "data/videos"
+  models: "data/models"
+  results: "data/results"
+  
+# Logging
+logging:
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR
+  save_logs: true
+  log_file: "logs/app.log"
