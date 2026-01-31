@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AI-Based Vehicle Counting and Crossing Time Analysis System
 
 An intelligent computer vision system that analyzes vehicle traffic by detecting, tracking, and counting vehicles crossing a checkpoint, while calculating their crossing times.
@@ -69,3 +70,7 @@ streamlit run ui/app.py
 ## License
 
 MIT License
+=======
+# AI-Based-Vehicle-Counting-and-Crossing-Time-Analysis-System
+New repo
+>>>>>>> 8c07a0c4bc09aa0ab3331e572f5d485fcb3a5062
